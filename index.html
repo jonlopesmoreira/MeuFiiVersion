@@ -8,6 +8,23 @@
 
 <body>
     <h1>Repositório de versão do MeuFii</h1>
+    <p>Versão atual do app: <span id="version">Carregando...</span></p>
+
+    <script>
+        // URL do version.json no GitHub Pages
+        const versionUrl = 'version.json'; // se estiver na mesma pasta
+        // ou: const versionUrl = 'https://<usuario>.github.io/<repo>/version.json';
+
+        fetch(versionUrl)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('version').innerText = data.version;
+            })
+            .catch(err => {
+                console.error('Erro ao carregar versão:', err);
+                document.getElementById('version').innerText = 'Erro ao carregar';
+            });
+    </script>
 </body>
 
 </html>
